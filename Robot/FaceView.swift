@@ -32,7 +32,7 @@ struct FaceView: View {
     
     func eyeView (offset: CGSize) -> some View {
         Capsule()
-            .fill(Color.black)
+            .fill(Color.white)
             .frame(width: blink ? 50 : 50, height: blink ? 10 : 50)
             .offset(x: offset.width, y: offset.height)
 //            .animation(.easeInOut(duration: 0.3), value: isBlinking)
