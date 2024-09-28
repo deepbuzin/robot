@@ -54,22 +54,6 @@ class CameraManager: ObservableObject {
     }
 }
 
-
-func setupCamera() throws -> AVCaptureSession {
-    let captureSession = AVCaptureSession()
-    let device = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
-    let input = try AVCaptureDeviceInput(device: device!)
-    
-    captureSession.addInput(input)
-    captureSession.sessionPreset = .high
-    
-    let output = AVCaptureVideoDataOutput()
-    captureSession.addOutput(output)
-    
-    return captureSession
-}
-
-
 struct CameraPreview: UIViewRepresentable {
     let session: AVCaptureSession
         
@@ -86,7 +70,6 @@ struct CameraPreview: UIViewRepresentable {
         
     }
 }
-
 
 struct CameraView: View {
     @StateObject var cameraManager = CameraManager()
