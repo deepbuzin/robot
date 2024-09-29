@@ -49,7 +49,8 @@ struct KeanuDetectionView: View {
                         GeometryReader { geometry in
                             ForEach(observations, id: \.self) { observation in
                                 Path { path in
-                                    let rect = observation.boundingBox.verticallyFlipped().toImageCoordinates(geometry.size)
+//                                    let rect = observation.boundingBox.verticallyFlipped().toImageCoordinates(geometry.size)
+                                    let rect = observation.boundingBox.toImageCoordinates(geometry.size, origin: .upperLeft)
                                     path.addRect(rect)
                                 }
                                 .stroke(Color.green, lineWidth: 2)

@@ -18,7 +18,8 @@ struct ContentView: View {
 //            Text("Hello, world!")
 //            CameraView()
 //            let uiImage = UIImage(named: "keanu")!
-            KeanuDetectionView()
+//            KeanuDetectionView()
+            FaceTrackingView()
         }
         .padding()
     }
