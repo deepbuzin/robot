@@ -18,9 +18,23 @@ extension UIDeviceOrientation {
             180
         case .portraitUpsideDown:
             270
-            
         default:
             90
+        }
+    }
+    
+    var toCGImagePropertyOrientation: CGImagePropertyOrientation {
+        switch self {
+        case .landscapeRight:
+                .upMirrored
+        case .portrait:
+                .leftMirrored
+        case .landscapeLeft:
+                .downMirrored
+        case .portraitUpsideDown:
+                .rightMirrored
+        default:
+                .leftMirrored
         }
     }
 }
