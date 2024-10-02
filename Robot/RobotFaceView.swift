@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FaceView: View {
+struct RobotFaceView: View {
     
     @State private var blink: Bool = false
     @State private var gaze: CGSize = .zero
@@ -53,5 +53,5 @@ struct FaceView: View {
 }
 
 #Preview {
-    FaceView()
+    RobotFaceView()
 }
