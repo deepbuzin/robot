@@ -12,6 +12,7 @@ struct RobotApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            CameraView()
         }
     }
 }

@@ -10,18 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundStyle(.tint)
-            
-//            FaceView()
-//            Text("Hello, world!")
-//            CameraView()
-//            let uiImage = UIImage(named: "keanu")!
-//            KeanuDetectionView()
-            FaceTrackingView()
+            CameraView()
         }
-        .padding()
+//        .padding()
     }
 }
 
