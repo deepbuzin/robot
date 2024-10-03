@@ -6,48 +6,21 @@
 //
 
 import SwiftUI
+import Vision
 
 struct RobotFaceView: View {
+    @State private var cameraModel = CameraModel()
+    @State private var faceTrackingModel = FaceTrackingModel()
     
-    @State private var blink: Bool = false
-    @State private var gaze: CGSize = .zero
+    let queue = DispatchQueue(label: "video")
     
     var body: some View {
-        HStack(spacing: 40) {
-            eyeView(offset: gaze)
-            eyeView(offset: gaze)
+        VStack {
+            EyesView(gaze: faceTrackingModel.getOffset(in: CGSize(width: 300, height: 300)))
         }
         .onAppear {
-            doBlinking()
-        }
-        .gesture(DragGesture().onChanged { value in
-            gaze = value.translation
-        }
-            .onEnded { value in
-                gaze = .zero
-                
-            }
-        ).animation(.bouncy(extraBounce: 0.2), value: gaze)
-    }
-    
-    func eyeView (offset: CGSize) -> some View {
-        Capsule()
-            .fill(Color.white)
-            .frame(width: blink ? 50 : 50, height: blink ? 10 : 50)
-            .offset(x: offset.width, y: offset.height)
-//            .animation(.easeInOut(duration: 0.3), value: isBlinking)
-    }
-    
-    func doBlinking() {
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { _ in
-            withAnimation(.easeInOut(duration: 0.3)) {
-                blink = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                withAnimation(.easeInOut(duration: 0.3)) {
-                    blink = false
-                }
-            }
+            cameraModel.requestAccessAndSetup()
+            cameraModel.output.setSampleBufferDelegate(faceTrackingModel, queue: queue)
         }
     }
 }

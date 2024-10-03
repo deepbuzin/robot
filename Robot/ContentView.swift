@@ -10,10 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-//            CameraView()
-            FaceTrackingView()
+            RobotFaceView()
         }
-//        .padding()
+        .padding()
     }
 }
 
